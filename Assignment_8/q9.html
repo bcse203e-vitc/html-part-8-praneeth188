@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+<body>
+    <input type="number" id="seconds" name="seconds">
+    <button id="start-button">Start</button>
+    <span id="countdown"></span>
+
+    <script>
+        const secondsInput = document.getElementById('seconds');
+        const startButton = document.getElementById('start-button');
+        const countdownSpan = document.getElementById('countdown');
+
+        startButton.addEventListener('click', () => {
+            const seconds = parseInt(secondsInput.value);
+            let intervalId;
+
+            function updateCountdown() {
+                if (seconds > 0) {
+                    countdownSpan.textContent = `Countdown: ${seconds}`;
+                    secondsInput.value = seconds - 1;
+                } else {
+                    countdownSpan.textContent = 'Countdown finished!';
+                    clearInterval(intervalId);
+                }
+            }
+
+            intervalId = setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
