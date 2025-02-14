@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+</head>
+<body>
+    <button id="rock-button">Rock</button>
+    <button id="paper-button">Paper</button>
+    <button id="scissors-button">Scissors</button>
+    <span id="result"></span>
+
+    <script>
+        const rockButton = document.getElementById('rock-button');
+        const paperButton = document.getElementById('paper-button');
+        const scissorsButton = document.getElementById('scissors-button');
+        const resultSpan = document.getElementById('result');
+
+        const choices = ['rock', 'paper', 'scissors'];
+
+        rockButton.addEventListener('click', () => {
+            playGame('rock');
+        });
+
+        paperButton.addEventListener('click', () => {
+            playGame('paper');
+        });
+
+        scissorsButton.addEventListener('click', () => {
+            playGame('scissors');
+        });
+
+        function playGame(userChoice) {
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            let result;
+
+            if (userChoice === computerChoice) {
+                result = 'It\'s a tie!';
+            } else if ((userChoice === 'rock' && computerChoice === 'scissors') ||
+                       (userChoice === 'paper' && computerChoice === 'rock') ||
+                       (userChoice === 'scissors' && computerChoice === 'paper')) {
+                result = `You win! ${userChoice} beats ${computerChoice}`;
+            } else {
+                result = `You lose! ${computerChoice} beats ${userChoice}`;
+            }
+
+            resultSpan.textContent = result;
+        }
+    </script>
+</body>
+</html>
