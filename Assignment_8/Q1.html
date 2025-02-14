@@ -1,1 +1,50 @@
+<!DOCTY<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Creator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="rows" placeholder="Number of rows">
+    <input type="number" id="columns" placeholder="Number of columns">
+    <button id="generate-table">Generate Table</button>
+    <div id="table-container"></div>
+
+    <script>
+        const rowsInput = document.getElementById('rows');
+        const columnsInput = document.getElementById('columns');
+        const generateTableButton = document.getElementById('generate-table');
+        const tableContainer = document.getElementById('table-container');
+
+        generateTableButton.addEventListener('click', () => {
+            const rows = parseInt(rowsInput.value);
+            const columns = parseInt(columnsInput.value);
+            const table = document.createElement('table');
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < columns; j++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = `Row ${i + 1}, Column ${j + 1}`;
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+
+            tableContainer.innerHTML = '';
+            tableContainer.appendChild(table);
+        });
+    </script>
+</body>
+</html>
 
