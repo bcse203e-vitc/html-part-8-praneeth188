@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter in a Textarea</title>
+</head>
+<body>
+    <textarea id="textarea" name="textarea"></textarea>
+    <span id="word-count"></span>
+
+    <script>
+        const textarea = document.getElementById('textarea');
+        const wordCountSpan = document.getElementById('word-count');
+
+        textarea.addEventListener('input', () => {
+            const text = textarea.value.trim();
+            const words = text.split(/\s+/);
+            wordCountSpan.textContent = `Word count: ${words.length}`;
+        });
+    </script>
+</body>
+</html>
